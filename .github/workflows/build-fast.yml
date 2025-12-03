@@ -1,4 +1,4 @@
-name: Build Kernel
+name: Test Build
 on:
   workflow_dispatch:
 
@@ -65,18 +65,6 @@ jobs:
                 echo "$CONFIG=$(grep -w "$CONFIG" "$CONFIG_ENV" | head -n 1 | cut -d "=" -f 2)" >> $GITHUB_ENV
             fi
         done
-
-    - name: Remove unused packages
-      if: env.REMOVE_UNUSED_PACKAGES == 'true'
-      uses: jlumbroso/free-disk-space@main
-      with:
-        tool-cache: true
-        android: false
-        dotnet: true
-        haskell: true
-        large-packages: true
-        docker-images: true
-        swap-storage: false
 
     - name: Set swap to 10G
       uses: pierotofy/set-swap-space@master

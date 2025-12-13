@@ -87,9 +87,9 @@ jobs:
       run: |
         echo "BUILD_TIME=$(TZ=Asia/Jakarta date "+%Y%m%d%H%M")" >> $GITHUB_ENV
          echo "DEVICE=a02" >> $GITHUB_ENV
-        sudo pkg update && pkg upgrade
-        sudo pkg install -y build-essential bc gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi libssl-dev libfl-dev clang curl git ftp lftp wget libarchive-tools ccache zip unzip tar gzip bzip2 rar unrar ccache automake flex lzop bison gperf zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3
-        sudo pkg list --upgradable -y
+        sudo apt-get update
+        sudo apt-get install -y build-essential bc gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi libssl-dev libfl-dev clang curl git ftp lftp wget libarchive-tools ccache zip unzip tar gzip bzip2 rar unrar ccache automake flex lzop bison gperf zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3
+        sudo apt list --upgradable -y
         mkdir -p $GITHUB_WORKSPACE/kernel_workspace
 
     - name: Download mkbootimg tools

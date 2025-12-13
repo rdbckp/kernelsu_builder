@@ -162,7 +162,7 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/toolchain/clang/bin:$GITHUB_WORKSPACE/kernel_workspace/toolchain/gcc/bin:$PATH
         export ARCH=arm
-        export CROSS_COMPILE=arm-linux-androidkernel-
+        export CROSS_COMPILE=arm-linux-androideabi-
         export TRIPLE_CLANG=arm-linux-gnueabi-
         export CC=clang
         export HOSTCC=clang
@@ -176,7 +176,7 @@ jobs:
         if [ ${{ env.ENABLE_CCACHE }} = true ]; then
             make -j$(nproc --all) CC="ccache clang" O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} ${{ env.GCC_32 }}
         else
-            make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} ${{ env.GCC_32 }}
+            make O=out ARCH=arm CC=clang HOSTCC=clang CLANG_TRIPLE=arm-linux-gnueabi- CROSS_COMPILE=arm-linux-androideabi- -j$(nproc --all)
         fi
 
     - name: Check a kernel output files

@@ -159,6 +159,7 @@ jobs:
           export KSU_EXPECTED_SIZE=${{ env.KSU_EXPECTED_SIZE }}
           export KSU_EXPECTED_HASH=${{ env.KSU_EXPECTED_HASH }}
         fi
+        cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         ./build_kernel.sh
         mkdir -p out/arch/${{ env.ARCH }}/boot
         cp ${{ env.KERNEL_IMAGE_NAME }} out/arch/${{ env.ARCH }}/boot/${{ env.KERNEL_IMAGE_NAME }}

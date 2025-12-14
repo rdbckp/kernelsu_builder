@@ -131,8 +131,7 @@ jobs:
           export KSU_EXPECTED_SIZE=${{ env.KSU_EXPECTED_SIZE }}
           export KSU_EXPECTED_HASH=${{ env.KSU_EXPECTED_HASH }}
         fi
-        make O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.CUSTOM_GCC_32_BIN }} CC=clang HOSTCC=clang ${{ env.KERNEL_CONFIG }}
-        make O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.CUSTOM_GCC_32_BIN }} CC=clang HOSTCC=clang -j$(nproc --all)
+        make -j$(nproc --all) O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.CUSTOM_GCC_32_BIN }} CC=clang HOSTCC=clang ${{ env.KERNEL_CONFIG }}
 
     - name: Check a kernel output files
       run: |
